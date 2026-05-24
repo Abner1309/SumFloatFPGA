@@ -1,12 +1,34 @@
-# Objetivo Geral:
-Esse projeto baseia-se na codificação de uma placa FPGA da Intel objetivando a implementação correta e segura de um somador de ponto flutuante simplificado. Como resultado, espera-se receber como saída o resultado da operação (soma ou subtração) no seguinte formato:
-Sinal + 0 + . + Mantissa + E + Expoente
-Obs: Assuma + como a operação de concatenação em Strings.
-Um exemplo desse formato seria o número +0.53E2 que expressa um resultado positivo onde a mantissa e o expoente são números hexadecimais.
-# Objetivos Específicos:
-A implementação do somador de ponto-flutuante divide-se basicamente em três etapas distintas, são elas o recebimento dos dados, o processamento desses dados e por fim a saída desses dados nos seis displays de sete segmentos. O recebimento dos valores é realizado pelo arquivo “fp_adder_test.vhd”, onde os sinais, expoentes e mantissas dos dois números são recebidos a partir de um loop, onde os valores são digitados nos interruptores (SW), o botão KEY0 ativa o clock e por fim o botão KEY1 reseta a inserção dos dados. Após o recebimento desses dados, as operações aritméticas são realizadas no arquivo “fp_adder.vhd”, onde os sinais, expoentes e mantissas dos dois números são processados de modo a gerar uma resposta que esteja de acordo com as regras de normalização. Após esse processamento inicial, os dados são enviados para o arquivo “hex_to_sseg.vhd”, onde ocorre um processamento desses dados de modo a decidir quais LEDs vão acender em cada display de sete segmentos. Por fim, o arquivo “disp_mux.vhd” realiza o acendimento correto dos LEDs. Portanto, infere-se que:
+# Floating-Point Adder on FPGA Board
+
+## 🌐​ Overview:
+This project is based on coding an Intel FPGA board with the aim of correctly and safely implementing a simplified floating-point adder.
+
+## 🤔​ What Is An FPGA Board:
+An FPGA (Field-Programmable Gate Array) is essentially a "blank" integrated circuit that can be completely reconfigured by the developer after it has been manufactured.
+
+Unlike a common processor in your computer or cell phone, which comes with pre-defined and immutable circuit factories, an FPGA allows you to create your own digital hardware from scratch.
+
+## 🔥​ Motivation:
+The presented project is based on the development of four VHDL codes that will be used to implement a floating-point adder on the Intel/Altera/TerAsic DE10-Lite board, using the board's switches (ranging from 0 to 9) as inputs and the LEDs present in the six seven-segment displays as outputs. Regarding the importance of this project, it's worth noting that these adders are fundamental in the arithmetic processing units of modern processors, such as CPUs and GPUs. They play a vital role in the overall system performance, especially in tasks involving intensive calculations. Furthermore, designing a floating-point adder involves dealing with challenges such as rounding, normalization, and exception handling (such as overflow and underflow).
+
+## 🔢​ Number Structure:
+The DE10-Lite license plate will receive a number that has the following elements:
+
+* Sign (+ or -)
+* Zero (0)
+* Period (.)
+* Mantissa (Number)
+* Letter E
+* Exponent (Number)
+
+Example: An example of this format would be the number shown below, which expresses a positive result where the mantissa and the exponent are hexadecimal numbers.
+```
++0.53E2
+```
+
+## 🔨​ How It Works:
+The floating-point adder implementation is basically divided into three distinct stages: data reception, data processing, and finally, data output on the six seven-segment displays. Data reception is handled by the file “fp_adder_test.vhd”, where the signs, exponents, and mantissas of the two numbers are received from a loop. The values ​​are entered into the switches (SW), the KEY0 button activates the clock, and the KEY1 button resets the data input. After receiving this data, arithmetic operations are performed in the “fp_adder.vhd” file, where the signs, exponents, and mantissas of the two numbers are processed to generate a response that conforms to the normalization rules. After this initial processing, the data is sent to the “hex_to_sseg.vhd” file, where further processing determines which LEDs will light up on each seven-segment display. Finally, the file “disp_mux.vhd” correctly turns on the LEDs. Therefore, it can be inferred that:
+
 * Input: “fp_adder_test.vhd”
 * Processing: “fp_adder.vhd”
-* Output: “disp_mux.vhd” e “hex_to_sseg.vhd”
-# Justificativa:
-A contribuição deste trabalho baseia-se na importância que esse projeto possui na compreensão da computação científica, onde operações de ponto-flutuante são cruciais para determinar a precisão dos valores envolvidos nos mais diferentes cálculos. Além disso, esse projeto serve como uma introdução para conceitos mais avançados, como multiplicadores e divisores de ponto flutuante que são componentes essenciais para unidades aritméticas mais complexas.
+* Output: “disp_mux.vhd” and “hex_to_sseg.vhd”
