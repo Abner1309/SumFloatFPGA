@@ -1,5 +1,10 @@
 # Floating-Point Adder on FPGA Board
 
+## 👥​ Team:
+* Abner Barradas Cândalo
+* Guilherme Meira Rebello
+* Ian Nicolas Magatti da Silva
+
 ## 🌐​ Overview:
 This project is based on coding an Intel FPGA board with the aim of correctly and safely implementing a simplified floating-point adder.
 
